@@ -1,3 +1,5 @@
+// Copyright (c) 2019 Dr. Matthias Hölzl.
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
