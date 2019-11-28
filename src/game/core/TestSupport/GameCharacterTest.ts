@@ -6,12 +6,11 @@ import Direction, {allDirections} from "../Direction";
 
 export function itSatisfiesGameCharacterSpec(gameCharacterCtor: GameCharacterConstructor): void {
     describe("A GameCharacter instance", () => {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        let [location, neighbors, level, world] = createTestLocations();
+        let [location, neighbors, , world] = createTestLocations();
         let unit: GameCharacter;
 
         beforeEach(() => {
-            [location, neighbors, level, world] = createTestLocations();
+            [location, neighbors, , world] = createTestLocations();
             unit = new gameCharacterCtor("Joe", location);
         });
 
@@ -35,7 +34,7 @@ export function itSatisfiesGameCharacterSpec(gameCharacterCtor: GameCharacterCon
             expect(unit.world).toEqual(location.world);
         });
 
-        it.each(Array.from(allDirections))("updates its location after moving", (d: Direction) => {
+        it.each(Array.from(allDirections))("updates its location after moving %s", (d: Direction) => {
             const originalLocation = unit.location;
             unit.move(d);
             expect(unit.location).not.toEqual(originalLocation);
